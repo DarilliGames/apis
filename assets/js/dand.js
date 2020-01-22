@@ -18,6 +18,7 @@ function getData(address, cb) {
 function writeToDocument(address) {
     var el = document.getElementById("data");
     el.innerHTML = "";
+    console.log(address);
 
     getData(address, function(data) {
         if(data.results.length > 1){
@@ -26,7 +27,7 @@ function writeToDocument(address) {
                 el.innerHTML += "<h5>"+data.results[i].name+ "</h5>";
                 el.innerHTML += "<h5>"+data.results[i].index+ "</h5>";
                 el.innerHTML += "<h5>"+data.results[i].url+ "</h5>";
-                el.innerHTML += ("<button onclick='writeToDocument('"+data.results[i].url+"')>Go to</button>")
+                el.innerHTML += (`<button onclick="writeToDocument('${data.results[i].url}')">Go to</button>`)
 
                 el.innerHTML += "<h5>"+Object.keys(data.results[i])+ "</h5>";
 

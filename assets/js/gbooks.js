@@ -20,7 +20,18 @@ function writeToDocument(address) {
     el.innerHTML = "";
 
     getData(address, function(data) {
-        console.log(data);
+        for(var i = 0; i< data.items.length; i++){
+            console.log(data.items[i]);
+            console.log(data.items[i].volumeInfo.authors);
+            
+            getData(data.items[i].selfLink, function(data2){
+                console.log(data2);
+            });
+
+            console.log(data.items[i].volumeInfo.publisher);
+
+        }
+        
         
     });
 }
